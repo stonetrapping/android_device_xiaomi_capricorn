@@ -16,9 +16,9 @@
 
 BOARD_VENDOR := xiaomi
 
-DEVICE_PATH := device/xiaomi/capricorn
+DEVICE_PATH := device/xiaomi/scorpio
 
-TARGET_SPECIFIC_HEADER_PATH := device/xiaomi/capricorn/include
+TARGET_SPECIFIC_HEADER_PATH := device/xiaomi/scorpio/include
 
 # Architecture
 TARGET_ARCH := arm64
@@ -38,7 +38,7 @@ ENABLE_CPUSETS := true
 TARGET_USES_64_BIT_BINDER := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := capricorn
+TARGET_OTA_ASSERT_DEVICE := scorpio
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := msm8996
@@ -53,7 +53,7 @@ BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x01000000
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_CONFIG := cyanogenmod_gemini_defconfig
+TARGET_KERNEL_CONFIG := lineageos_gemini_defconfig
 TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8996
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/zImage
@@ -173,8 +173,8 @@ BOARD_USES_QC_TIME_SERVICES := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
+#TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
+#TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
@@ -192,8 +192,8 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 USE_SENSOR_MULTI_HAL := true
 
 # Vendor init
-TARGET_INIT_VENDOR_LIB := libinit_capricorn
-TARGET_RECOVERY_DEVICE_MODULES := libinit_capricorn
+TARGET_INIT_VENDOR_LIB := libinit_scorpio
+TARGET_RECOVERY_DEVICE_MODULES := libinit_scorpio
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
@@ -212,4 +212,4 @@ WIFI_DRIVER_MODULE_NAME := "wlan"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
--include vendor/xiaomi/capricorn/BoardConfigVendor.mk
+-include vendor/xiaomi/scorpio/BoardConfigVendor.mk

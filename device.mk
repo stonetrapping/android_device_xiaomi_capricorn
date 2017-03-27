@@ -17,7 +17,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/xiaomi/capricorn/capricorn-vendor.mk)
+$(call inherit-product-if-exists, vendor/xiaomi/scorpio/scorpio-vendor.mk)
 
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
@@ -155,6 +155,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/calib.cfg:system/etc/calib.cfg
+
+# Doze mode
+PRODUCT_PACKAGES += \
+    XiaomiDoze
 
 # Fingerprint
 PRODUCT_PACKAGES += \

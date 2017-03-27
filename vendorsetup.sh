@@ -1,2 +1,2 @@
-add_lunch_combo lineage_capricorn-eng
-add_lunch_combo lineage_capricorn-userdebug
+add_lunch_combo lineage_scorpio-eng
+add_lunch_combo lineage_scorpio-userdebug
