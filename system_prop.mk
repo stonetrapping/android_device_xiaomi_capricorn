@@ -81,7 +81,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Fingerprint
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.qfp=true \
+    persist.qfp=false \
     persist.qfp.fd_enabled=1 \
     persist.qfp.home_btn_enabled=1 \
     persist.qfp.ssc_enable_island=1 \
@@ -102,7 +102,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.qfp.cbge_sleep_enabled=1 \
     persist.qfp.filter_liftfinger=0 \
     persist.qfp.wup_display=0 \
-    persist.qfp.capacitive_enabled=1 \
+    persist.qfp.capacitive_enabled=1
+
+#property to set fingerpirnt vendor
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.fingerprint=fpc \
+    sys.fpc.tu.disabled=0 \
+    ro.qti.sensors.touch_taptap=true
 
 # FRP
 PRODUCT_PROPERTY_OVERRIDES += \
