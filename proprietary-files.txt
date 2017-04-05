@@ -437,14 +437,14 @@ vendor/lib64/libssd.so
 vendor/lib/libQSEEComAPI.so
 
 # Fingerprint
--app/QFingerprintService/QFingerprintService.apk
-bin/qfp-daemon
+#app/QFingerprintService/QFingerprintService.apk
+#bin/qfp-daemon
+#vendor/lib64/hw/fingerprint.qcom.so
+#vendor/lib/hw/fingerprint.qcom.so
+#etc/init.captouch.sh
 bin/qvop-daemon
 vendor/lib64/libqvop-service.so
 vendor/lib/libqvop-service.so
-vendor/lib64/hw/fingerprint.qcom.so
-vendor/lib/hw/fingerprint.qcom.so
-etc/init.captouch.sh
 lib/hw/fingerprint.fpc.so
 lib64/hw/fingerprint.fpc.so
 lib64/libcom_fingerprints_service.so
@@ -679,10 +679,10 @@ vendor/lib64/libmm-disp-apis.so
 vendor/lib64/libmm-qdcm.so
 
 # qfp
-vendor/lib/libqfp-service.so
-vendor/lib/qfp.wakeup.so
-vendor/lib64/libqfp-service.so
-vendor/lib64/qfp.wakeup.so
+#vendor/lib/libqfp-service.so
+#vendor/lib/qfp.wakeup.so
+#vendor/lib64/libqfp-service.so
+#vendor/lib64/qfp.wakeup.so
 
 # QMI
 bin/irsc_util
