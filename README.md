@@ -3,9 +3,12 @@ Device configuration for Xiaomi Mi Note 2
 
 The Xiaomi Mi Note 2 (codenamed _"Scorpio"_) is a high-end smartphone from Xiaomi.
 
-It was announced in Octoboer 2016, in three flavours. 
-Standard:   4 / 64GB  (TD-LTE：B38/B39/B40/B41；FDD LTE：B1/B3/B5/B7) \
-Pro:        6 / 128GB (TD-LTE：B38/B39/B40/B41；FDD LTE：B1/B3/B5/B7) \
+It was announced in Octoboer 2016, in three flavours, offering different RAM, storage and LTE Bands
+
+Standard:   4 / 64GB  (TD-LTE：B38/B39/B40/B41；FDD LTE：B1/B3/B5/B7)
+
+Pro:        6 / 128GB (TD-LTE：B38/B39/B40/B41；FDD LTE：B1/B3/B5/B7)
+
 Global Pro: 6 / 128GB (TD-LTE: B38/B39/B40/B41；FDD-LTE:B1/B2/B3/B4/B5/B7/B8/B12/B13/B17/B18/B19/B20/B25/B26/B28/B29/B30) \
 
 
