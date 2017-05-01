@@ -48,7 +48,7 @@ TARGET_NO_BOOTLOADER := true
 BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
 TARGET_KERNEL_CONFIG := lineageos_gemini_defconfig
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff androidboot.selinux=permissive
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/zImage.gz
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/zImage.gz-dtb
 TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8996
 
 # Platform
