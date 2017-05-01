@@ -84,7 +84,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.qfp=false \
     ro.hardware.fingerprint=fpc \
     sys.fpc.tu.disabled=0 \
-    ro.qti.sensors.touch_taptap=true
 
 # FRP
 PRODUCT_PROPERTY_OVERRIDES += \

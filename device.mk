@@ -122,7 +122,7 @@ PRODUCT_PACKAGES += \
 
 # Device config scripts
 PRODUCT_PACKAGES += \
-    init.leds.sh \
+    init.leds.sh 
 
 # Device init scripts
 PRODUCT_PACKAGES += \

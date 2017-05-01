@@ -32,9 +32,7 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>1</item>
         <item>4</item>
-        <item>5</item>
         <item>8</item>
         <item>13</item>
         <item>17</item>
@@ -62,27 +60,25 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>2</item>
-        <item>3</item>
-        <item>3</item>
+        <item>10</item>
         <item>15</item>
-        <item>15</item>
-        <item>15</item>
-        <item>15</item>
+        <item>25</item>
         <item>31</item>
         <item>39</item>
-        <item>43</item>
-        <item>43</item>
-        <item>44</item>
-        <item>45</item>
         <item>48</item>
-        <item>55</item>
-        <item>60</item>
+        <item>51</item>
+        <item>56</item>
+        <item>56</item>
+        <item>57</item>
+        <item>59</item>
         <item>63</item>
-        <item>67</item>
-        <item>84</item>
-        <item>93</item>
-        <item>105</item>
+        <item>72</item>
+        <item>78</item>
+        <item>82</item>
+        <item>87</item>
+        <item>109</item>
+        <item>121</item>
+        <item>136</item>
         <item>200</item>
         <item>240</item>
         <item>255</item>
@@ -109,7 +105,7 @@
 
     <!-- Minimum screen brightness setting allowed by the power manager.
          The user is forbidden from setting the brightness below this level. -->
-    <integer name="config_screenBrightnessSettingMinimum">5</integer>
+    <integer name="config_screenBrightnessSettingMinimum">10</integer>
 
     <!-- Stability requirements in milliseconds for accepting a new brightness level.  This is used
          for debouncing the light sensor.  Different constants are used to debounce the light sensor

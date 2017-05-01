@@ -26,7 +26,6 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-
 start_copying_prebuilt_qcril_db()
 {
     if [ -f /system/vendor/qcril.db -a ! -f /data/misc/radio/qcril.db ]; then

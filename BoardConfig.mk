@@ -46,10 +46,17 @@ TARGET_NO_BOOTLOADER := true
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
-TARGET_KERNEL_CONFIG := lineageos_gemini_defconfig
+BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff androidboot.selinux=permissive
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/zImage.gz-dtb
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_RAMDISK_OFFSET := 0x01000000
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_CONFIG := lineageos_gemini_defconfig
 TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8996
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/zImage
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8996
@@ -195,8 +202,20 @@ TARGET_INIT_VENDOR_LIB := libinit_scorpio
 TARGET_RECOVERY_DEVICE_MODULES := libinit_scorpio
 
 # Wifi
+BOARD_HAS_QCOM_WLAN := true
+BOARD_HAS_QCOM_WLAN_SDK := true
+BOARD_WLAN_DEVICE := qcwcn
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+BOARD_HOSTAPD_DRIVER := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+HOSTAPD_VERSION := VER_0_8_X
+WIFI_DRIVER_FW_PATH_AP := "ap"
+WIFI_DRIVER_FW_PATH_STA := "sta"
+WIFI_DRIVER_FW_PATH_P2P := "p2p"
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
 WIFI_DRIVER_MODULE_NAME := "wlan"
+WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
 -include vendor/xiaomi/scorpio/BoardConfigVendor.mk
