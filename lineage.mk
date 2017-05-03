@@ -25,12 +25,12 @@ $(call inherit-product, device/xiaomi/scorpio/device.mk)
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := lineage_scorpio
-PRODUCT_DEVICE := scorpio
+BOARD_VENDOR := Xiaomi
 PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := MI Note 2
+PRODUCT_DEVICE := scorpio
+PRODUCT_NAME := lineage_scorpio
 PRODUCT_MANUFACTURER := Xiaomi
+PRODUCT_MODEL := MI Note 2
+TARGET_VENDOR := Xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
-
-TARGET_VENDOR := Xiaomi
