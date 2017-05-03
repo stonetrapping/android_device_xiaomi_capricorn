@@ -36,13 +36,13 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
 ENABLE_CPUSETS := true
+TARGET_USES_64_BIT_BINDER := true
 USE_CLANG_PLATFORM_BUILD := true
 
 ##Johns recommendations
-TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
-TARGET_USES_64_BIT_BINDER := true
-ENABLE_SCHEDBOOST :=true
-TARGET_USES_INTERACTION_BOOST :=true
+#TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
+#ENABLE_SCHEDBOOST :=true
+#TARGET_USES_INTERACTION_BOOST :=true
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := scorpio
@@ -53,7 +53,7 @@ TARGET_NO_BOOTLOADER := true
 
 # Kernel Common
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x01000000
@@ -131,8 +131,16 @@ BOARD_USES_CYANOGEN_HARDWARE := true
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/soc/75ba000.i2c/i2c-12/12-0020/input/input2/wake_gesture"
 
 # CNE and DPM
-TARGET_LDPRELOAD := libNimsWrap.so
+#TARGET_LDPRELOAD := libNimsWrap.so
 BOARD_USES_QCNE := true
+
+# Dex
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),eng)
+    WITH_DEXPREOPT ?= true
+  endif
+endif
+WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true
 
 # Display
 MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
@@ -146,6 +154,9 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+
+VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
+SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
@@ -177,13 +188,14 @@ TARGET_POWERHAL_VARIANT := qcom
 # QCOM
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QC_TIME_SERVICES := true
+TARGET_USE_SDCLANG := true
 
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := false
+TARGET_USERIMAGES_USE_F2FS := true
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/qcom/common
