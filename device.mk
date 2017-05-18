@@ -5,7 +5,7 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+       http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -24,8 +24,6 @@ $(call inherit-product-if-exists, vendor/xiaomi/scorpio/scorpio-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-
-#WITH_SU := true
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
@@ -49,19 +47,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.full.xml:system/etc/permissions/android.hardware.camera.full.xml \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:system/etc/permissions/android.hardware.camera.raw.xml \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml \
-    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml \
-    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
-    frameworks/native/data/etc/android.hardware.sensor.hifi_sensors.xml:system/etc/permissions/android.hardware.sensor.hifi_sensors.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/etc/permissions/android.hardware.sensor.stepcounter.xml \
-    frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
@@ -74,7 +62,16 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
+    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml \
+    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
+    frameworks/native/data/etc/android.hardware.sensor.hifi_sensors.xml:system/etc/permissions/android.hardware.sensor.hifi_sensors.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/etc/permissions/android.hardware.sensor.stepcounter.xml \
+    frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -112,9 +109,16 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/audio/mixer_paths_i2s.xml:system/etc/mixer_paths_i2s.xml
 
+PRODUCT_COPY_FILES += \
+    frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:/system/etc/a2dp_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:/system/etc/audio_policy_volumes.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:/system/etc/default_volume_tables.xml \
+    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:/system/etc/r_submix_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:/system/etc/usb_audio_policy_configuration.xml
+
 # Browser
 PRODUCT_PACKAGES += \
-    Gello
+    Jelly
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -122,7 +126,7 @@ PRODUCT_PACKAGES += \
 
 # Device config scripts
 PRODUCT_PACKAGES += \
-    init.leds.sh 
+    init.leds.sh
 
 # Device init scripts
 PRODUCT_PACKAGES += \
@@ -140,8 +144,8 @@ PRODUCT_PACKAGES += \
     libcnefeatureconfig
 
 # ConfigPanel
-#PRODUCT_PACKAGES += \
-    ConfigPanel \
+PRODUCT_PACKAGES += \
+    ConfigPanel
 
 # Display
 PRODUCT_PACKAGES += \
@@ -155,57 +159,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/calib.cfg:system/etc/calib.cfg
 
-# Doze mode
+# Doze
 PRODUCT_PACKAGES += \
-    XiaomiDoze
+    XiaomiDoze \
+    XiaomiPocketMode
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    fingerprintd \
-    XiaomiPocketMode
-
-# Fingerprint Firmware
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/firmware/fingerpr.b00:system/firmware/image/fingerpr.b00 \
-    $(LOCAL_PATH)/firmware/fingerpr.b01:system/firmware/image/fingerpr.b01 \
-    $(LOCAL_PATH)/firmware/fingerpr.b02:system/firmware/image/fingerpr.b02 \
-    $(LOCAL_PATH)/firmware/fingerpr.b03:system/firmware/image/fingerpr.b03 \
-    $(LOCAL_PATH)/firmware/fingerpr.b04:system/firmware/image/fingerpr.b04 \
-    $(LOCAL_PATH)/firmware/fingerpr.b05:system/firmware/image/fingerpr.b05 \
-    $(LOCAL_PATH)/firmware/fingerpr.b06:system/firmware/image/fingerpr.b06 \
-    $(LOCAL_PATH)/firmware/fingerpr.mdt:system/firmware/image/fingerpr.mdt \
-    $(LOCAL_PATH)/firmware/fpca4.b00:system/firmware/image/fpca4.b00 \
-    $(LOCAL_PATH)/firmware/fpca4.b01:system/firmware/image/fpca4.b01 \
-    $(LOCAL_PATH)/firmware/fpca4.b02:system/firmware/image/fpca4.b02 \
-    $(LOCAL_PATH)/firmware/fpca4.b03:system/firmware/image/fpca4.b03 \
-    $(LOCAL_PATH)/firmware/fpca4.b04:system/firmware/image/fpca4.b04 \
-    $(LOCAL_PATH)/firmware/fpca4.b05:system/firmware/image/fpca4.b05 \
-    $(LOCAL_PATH)/firmware/fpca4.b06:system/firmware/image/fpca4.b06 \
-    $(LOCAL_PATH)/firmware/fpca4.mdt:system/firmware/image/fpca4.mdt \
-    $(LOCAL_PATH)/firmware/fpca8.b00:system/firmware/image/fpca8.b00 \
-    $(LOCAL_PATH)/firmware/fpca8.b01:system/firmware/image/fpca8.b01 \
-    $(LOCAL_PATH)/firmware/fpca8.b02:system/firmware/image/fpca8.b02 \
-    $(LOCAL_PATH)/firmware/fpca8.b03:system/firmware/image/fpca8.b03 \
-    $(LOCAL_PATH)/firmware/fpca8.b04:system/firmware/image/fpca8.b04 \
-    $(LOCAL_PATH)/firmware/fpca8.b05:system/firmware/image/fpca8.b05 \
-    $(LOCAL_PATH)/firmware/fpca8.b06:system/firmware/image/fpca8.b06 \
-    $(LOCAL_PATH)/firmware/fpca8.mdt:system/firmware/image/fpca8.mdt \
-    $(LOCAL_PATH)/firmware/fpcb7.b00:system/firmware/image/fpcb7.b00 \
-    $(LOCAL_PATH)/firmware/fpcb7.b01:system/firmware/image/fpcb7.b01 \
-    $(LOCAL_PATH)/firmware/fpcb7.b02:system/firmware/image/fpcb7.b02 \
-    $(LOCAL_PATH)/firmware/fpcb7.b03:system/firmware/image/fpcb7.b03 \
-    $(LOCAL_PATH)/firmware/fpcb7.b04:system/firmware/image/fpcb7.b04 \
-    $(LOCAL_PATH)/firmware/fpcb7.b05:system/firmware/image/fpcb7.b05 \
-    $(LOCAL_PATH)/firmware/fpcb7.b06:system/firmware/image/fpcb7.b06 \
-    $(LOCAL_PATH)/firmware/fpcb7.mdt:system/firmware/image/fpcb7.mdt \
-    $(LOCAL_PATH)/firmware/fpcta32.b00:system/firmware/image/fpcta32.b00 \
-    $(LOCAL_PATH)/firmware/fpcta32.b01:system/firmware/image/fpcta32.b01 \
-    $(LOCAL_PATH)/firmware/fpcta32.b02:system/firmware/image/fpcta32.b02 \
-    $(LOCAL_PATH)/firmware/fpcta32.b03:system/firmware/image/fpcta32.b03 \
-    $(LOCAL_PATH)/firmware/fpcta32.b04:system/firmware/image/fpcta32.b04 \
-    $(LOCAL_PATH)/firmware/fpcta32.b05:system/firmware/image/fpcta32.b05 \
-    $(LOCAL_PATH)/firmware/fpcta32.b06:system/firmware/image/fpcta32.b06 \
-    $(LOCAL_PATH)/firmware/fpcta32.mdt:system/firmware/image/fpcta32.mdt
+    fingerprintd
 
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
@@ -214,21 +175,22 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8996 \
-    libcurl
+    libcurl \
+    libgnsspps
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gps/etc/flp.conf:system/etc/flp.conf \
-    $(LOCAL_PATH)/gps/etc/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/gps/etc/izat.conf:system/etc/izat.conf \
-    $(LOCAL_PATH)/gps/etc/sap.conf:system/etc/sap.conf \
-    $(LOCAL_PATH)/gps/etc/xtwifi.conf:system/etc/xtwifi.conf
+     $(LOCAL_PATH)/gps/etc/flp.conf:system/etc/flp.conf \
+     $(LOCAL_PATH)/gps/etc/gps.conf:system/etc/gps.conf \
+     $(LOCAL_PATH)/gps/etc/izat.conf:system/etc/izat.conf \
+     $(LOCAL_PATH)/gps/etc/sap.conf:system/etc/sap.conf \
+     $(LOCAL_PATH)/gps/etc/xtwifi.conf:system/etc/xtwifi.conf
 
 # Input
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/usf_tsc.idc:system/usr/idc/usf_tsc.idc \
     $(LOCAL_PATH)/idc/usf_tsc_ext.idc:system/usr/idc/usf_tsc_ext.idc \
     $(LOCAL_PATH)/idc/usf_tsc_ptr.idc:system/usr/idc/usf_tsc_ptr.idc \
-    $(LOCAL_PATH)/idc/uinput-fpc.idc:system/usr/idc/uinput-fpc.idc
+    $(LOCAL_PATH)/idc/usf_tsc_ptr.idc:system/usr/idc/uinput-fpc.idc
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/atmel-maxtouch.kl:system/usr/keylayout/atmel-maxtouch.kl \
@@ -237,7 +199,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:system/usr/keylayout/synaptics_dsx.kl \
     $(LOCAL_PATH)/keylayout/cyttsp_button.kl:system/usr/keylayout/cyttsp_button.kl \
     $(LOCAL_PATH)/keylayout/uinput-fpc.kl:system/usr/keylayout/uinput-fpc.kl
-    
 
 # IPA Manager
 PRODUCT_PACKAGES += \
@@ -253,6 +214,14 @@ PRODUCT_PACKAGES += \
     ebtables \
     ethertypes \
     libebtc
+
+# KeyHandler
+PRODUCT_PACKAGES += \
+    com.cyanogenmod.keyhandler
+
+# ConfigPanel
+PRODUCT_PACKAGES += \
+    ConfigPanel
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -328,12 +297,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-8996.conf:system/etc/thermal-engine-8996.conf
 
-# Wifi
-PRODUCT_COPY_FILES += \
-   $(LOCAL_PATH)/wifi/qca_cld_wlan.ko:system/lib/modules/wlan.ko
-
+# WiFi
 PRODUCT_PACKAGES += \
-    dhcpcd.conf \
     libqsap_sdk \
     libQWiFiSoftApCfg \
     libwpa_client \
@@ -350,4 +315,5 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/fstman.ini:system/etc/wifi/fstman.ini \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini

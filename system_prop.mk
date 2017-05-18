@@ -3,7 +3,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1 \
     audio_hal.period_size=192 \
     audio.deep_buffer.media=true \
-    audio.offload.buffer.size.kb=64 \
+    audio.offload.buffer.size.kb=32 \
     audio.offload.gapless.enabled=true \
     audio.offload.min.duration.secs=15 \
     audio.offload.multiaac.enable=true \
@@ -14,16 +14,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.track.enable=false \
     audio.offload.video=true \
     audio.safx.pbe.enabled=true \
-    audio.parser.ip.buffer.size=262144 \
+    audio.parser.ip.buffer.size=0 \
     audio.dolby.ds2.enabled=false \
     audio.dolby.ds2.hardbypass=false \
     qcom.hw.aac.encoder=true \
     tunnel.audio.encode=false \
-    use.voice.path.for.pcm.voip=true
+    use.voice.path.for.pcm.voip=true \
+    ro.audio.hifi=true \
+    persist.audio.hifi=false \
+    persist.audio.hifi.volume=0 \
+    persist.audio.native.44.1kHz=true
+
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.audio.ssr=false \
-    ro.qc.sdk.audio.fluencetype=none \
+    ro.qc.sdk.audio.fluencetype=fluence \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicerec=false \
     persist.audio.fluence.speaker=true
@@ -51,7 +56,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.hal3hfr.enable=0 \
     persist.camera.gyro.disable=0 \
-    persist.camera.imglib.fddsp=1
+    persist.camera.imglib.fddsp=1 \
+    camera.disable_zsl_mode=1 \
+    persist.camera.HAL3.enabled=1
 
 # CNE
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -82,8 +89,33 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Fingerprint
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.qfp=false \
+    persist.qfp.fd_enabled=0 \
+    persist.qfp.home_btn_enabled=0 \
+    persist.qfp.ssc_enable_island=0 \
+    persist.qfp.ssc_fgoff_dil_s1=10 \
+    persist.qfp.ssc_fgoff_dil_home=10 \
+    persist.qfp.ssc_thresh_s1=0.570 \
+    persist.qfp.ssc_thresh_s1_off=0.0 \
+    persist.qfp.ssc_thresh_s1_rub=0.0 \
+    persist.qfp.ssc_thresh_s2=0.430 \
+    persist.qfp.ssc_thresh_s2_off=0.000 \
+    persist.qfp.ssc_thresh_s2_touch=0.330 \
+    persist.qfp.ssc_thresh_s2_lift=0.310 \
+    persist.qfp.ssc_basis_s1=/persist/qc_senseid/bg_estimation/bg_small1_basis.dat \
+    persist.qfp.ssc_basis_s1_off=/persist/qc_senseid/bg_estimation/bg_small1_off_basis.dat \
+    persist.qfp.ssc_basis_s2=/persist/qc_senseid/bg_estimation/bg_small2_basis.dat \
+    persist.qfp.ssc_basis_s2_off=/persist/qc_senseid/bg_estimation/bg_small2_off_basis.dat \
+    persist.qfp.cbge_active_enabled=0 \
+    persist.qfp.cbge_sleep_enabled=0 \
+    persist.qfp.filter_liftfinger=0 \
+    persist.qfp.wup_display=0 \
+    persist.qfp.capacitive_enabled=0
+
+#property to set fingerpirnt vendor
+PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.fingerprint=fpc \
     sys.fpc.tu.disabled=0 \
+    ro.qti.sensors.touch_taptap=true
 
 # FRP
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -153,7 +185,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.default_cdma_sub=0 \
     ro.telephony.default_network=20,20 \
-    ro.telephony.ril_class=XiaomiMSM8996RIL \
+    ro.telephony.ril_class=GeminiRIL \
     persist.data.qmi.adb_logmask=0 \
     persist.net.doxlat=true \
     persist.radio.apm_sim_not_pwdn=1 \

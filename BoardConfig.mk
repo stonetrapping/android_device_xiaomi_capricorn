@@ -14,10 +14,8 @@
 # limitations under the License.
 #
 
--include vendor/xiaomi/scorpio/BoardConfigVendor.mk
-
-BOARD_PATH := device/xiaomi/scorpio
 BOARD_VENDOR := xiaomi
+
 DEVICE_PATH := device/xiaomi/scorpio
 
 TARGET_SPECIFIC_HEADER_PATH := device/xiaomi/scorpio/include
@@ -33,16 +31,11 @@ TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a53
+TARGET_2ND_CPU_VARIANT := kryo
 
 ENABLE_CPUSETS := true
-TARGET_USES_64_BIT_BINDER := true
-USE_CLANG_PLATFORM_BUILD := true
 
-##Johns recommendations
-#TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
-#ENABLE_SCHEDBOOST :=true
-#TARGET_USES_INTERACTION_BOOST :=true
+TARGET_USES_64_BIT_BINDER := true
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := scorpio
@@ -51,30 +44,27 @@ TARGET_OTA_ASSERT_DEVICE := scorpio
 TARGET_BOOTLOADER_BOARD_NAME := msm8996
 TARGET_NO_BOOTLOADER := true
 
-# Kernel Common
+# Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x01000000
-TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8996
-######
-#Kernel Prebuilt
-#TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/zImage
-#BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
-######
-#Custom kernel
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_IMAGE_NAME := Image.gz-dtb
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8996
 TARGET_KERNEL_CONFIG := scorpio_defconfig
-TARGET_KERNEL_APPEND_DTB := true
-#####
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8996
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno530
+
+USE_CLANG_PLATFORM_BUILD := true
+
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := device/qcom/common
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
@@ -105,7 +95,6 @@ AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
 BOARD_SUPPORTS_SOUND_TRIGGER := true
 BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
-USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
@@ -117,6 +106,7 @@ QCOM_BT_USE_BTNV := true
 
 # Camera
 BOARD_QTI_CAMERA_32BIT_ONLY := true
+TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
 TARGET_USES_MEDIA_EXTENSIONS := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
@@ -128,19 +118,11 @@ BOARD_HARDWARE_CLASS += \
     hardware/cyanogen/cmhw \
     $(DEVICE_PATH)/cmhw
 BOARD_USES_CYANOGEN_HARDWARE := true
-TARGET_TAP_TO_WAKE_NODE := "/sys/devices/soc/75ba000.i2c/i2c-12/12-0020/input/input2/wake_gesture"
+TARGET_TAP_TO_WAKE_NODE := "/sys/devices/soc/75ba000.i2c/i2c-12/12-0038/wakeup_mode"
 
 # CNE and DPM
-#TARGET_LDPRELOAD := libNimsWrap.so
+TARGET_LDPRELOAD := libNimsWrap.so
 BOARD_USES_QCNE := true
-
-# Dex
-ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
-    WITH_DEXPREOPT ?= true
-  endif
-endif
-WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true
 
 # Display
 MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
@@ -154,9 +136,6 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-
-VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
-SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
@@ -188,29 +167,25 @@ TARGET_POWERHAL_VARIANT := qcom
 # QCOM
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QC_TIME_SERVICES := true
-TARGET_USE_SDCLANG := true
 
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+#TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
+#TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
-# Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := device/qcom/common
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_xiaomi
-TARGET_RELEASETOOLS_EXTENSIONS := $(VENDOR_PATH)
-
 # RIL
-BOARD_RIL_CLASS := ../../../$(BOARD_PATH)/ril
+BOARD_RIL_CLASS := ../../../$(DEVICE_PATH)/ril
 PROTOBUF_SUPPORTED := true
 TARGET_RIL_VARIANT := caf
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += $(BOARD_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Sensors
 USE_SENSOR_MULTI_HAL := true
@@ -232,10 +207,6 @@ WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-
-#Wifi Prebuilt Kernel
-#WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
-#WIFI_DRIVER_MODULE_NAME := "wlan"
 
 # Inherit from the proprietary version
 -include vendor/xiaomi/scorpio/BoardConfigVendor.mk

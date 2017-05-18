@@ -34,6 +34,14 @@ $(shell mkdir -p $(TARGET_OUT_ETC)/firmware; \
     ln -sf /dev/block/bootdevice/by-name/msadp \
 	    $(TARGET_OUT_ETC)/firmware/msadp)
 
+# WiFi symlinks
+$(shell mkdir -p $(TARGET_OUT_ETC)/firmware/wlan/qca_cld; \
+    ln -sf /system/etc/wifi/WCNSS_qcom_cfg.ini \
+	    $(TARGET_OUT_ETC)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini; \
+    ln -sf /persist/wlan_mac.bin \
+	    $(TARGET_OUT_ETC)/firmware/wlan/qca_cld/wlan_mac.bin)
+# END WiFi symlinks
+
 # IMS lib symlink
 IMS_LIBS := libimscamera_jni.so libimsmedia_jni.so
 
