@@ -34,3 +34,9 @@ PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 TARGET_VENDOR := Xiaomi
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    TARGET_DEVICE="scorpio" \
+    PRODUCT_NAME="scorpio" \
+    BUILD_FINGERPRINT="Xiaomi/scorpio/scorpio:6.0.1/MXB48T/V8.2.5.0.MADCNDL:user/release-keys" \
+    PRIVATE_BUILD_DESC="scorpio-user 6.0.1 MXB48T V8.2.5.0.MADCNDL release-keys"
