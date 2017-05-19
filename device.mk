@@ -256,7 +256,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    $(LOCAL_PATH)/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
+    $(LOCAL_PATH)/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
+    $(LOCAL_PATH)/nfc/libpn548ad_fw.so:system/vendor/firmware/libpn548ad_fw.so \
+    $(LOCAL_PATH)/nfc/nfc_nci.pn54x.default.so:system/lib64/hw
 
 # OMX
 PRODUCT_PACKAGES += \
