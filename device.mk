@@ -71,7 +71,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.hifi_sensors.xml:system/etc/permissions/android.hardware.sensor.hifi_sensors.xml \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/etc/permissions/android.hardware.sensor.stepcounter.xml \
-    frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml
+    frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml \
+    frameworks/native/data/etc/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -142,6 +145,10 @@ PRODUCT_PACKAGES += \
 # CNE
 PRODUCT_PACKAGES += \
     libcnefeatureconfig
+
+# Consumerir
+PRODUCT_PACKAGES += \
+    consumerir.msm8996
 
 # ConfigPanel
 PRODUCT_PACKAGES += \
@@ -294,6 +301,10 @@ PRODUCT_PACKAGES += \
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.msm8996
+
+# Substratrum
+PRODUCT_PACKAGES += \
+    ThemeInterfacer
 
 # Thermal
 PRODUCT_COPY_FILES += \
